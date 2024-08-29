@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 
-import logo from "../../../public/assets/img/logo/logo.png";
 import Image from "next/image";
 import axios from "axios";
 
@@ -10,8 +9,7 @@ import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import useGlobalContext from "@/hooks/use-context";
 import Preloader from "@/sheardComponent/Preloader/Preloader";
-import apiUrl from '../../utils/api';
-
+import apiUrl from "../../utils/api";
 
 interface FormData {
   phone_number: string;
@@ -31,13 +29,13 @@ const LoginMain = () => {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     setLoading(true);
-    console.log(apiUrl)
+    console.log(apiUrl);
 
     const email = data.phone_number;
     const password = data.password;
 
     const userInfo = {
-      phone_number:email,
+      phone_number: email,
       password,
     };
 
@@ -50,7 +48,7 @@ const LoginMain = () => {
             localStorage.setItem("accessToken", token);
             setLoading(false);
             router.push("/");
-            
+
             break;
           case "password not Match":
             setLoading(false);
@@ -80,8 +78,7 @@ const LoginMain = () => {
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="cashier-login-area flex justify-center items-center w-full h-full"
-      >
+        className="cashier-login-area flex justify-center items-center w-full h-full">
         <div className="cashier-login-wrapper">
           <div className="cashier-login-logo text-center mb-12">
             <h3>Admin Panel</h3>
@@ -94,11 +91,13 @@ const LoginMain = () => {
                 <input
                   type="text"
                   placeholder="Phone Number"
-                  
-                  {...register("phone_number", { 
-                  })}
+                  {...register("phone_number", {})}
                 />
-                {errors.phone_number && <span className="error-message">{errors.phone_number.message}</span>}
+                {errors.phone_number && (
+                  <span className="error-message">
+                    {errors.phone_number.message}
+                  </span>
+                )}
               </div>
               <span className="input-icon">
                 <i className="fa-light fa-envelope"></i>
@@ -111,30 +110,30 @@ const LoginMain = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
-                  
                   {...register("password", {
-                    
                     minLength: {
                       value: 6,
                       message: "Password must be at least 6 characters long",
                     },
                   })}
                 />
-                {errors.password && <span className="error-message">{errors.password.message}</span>}
+                {errors.password && (
+                  <span className="error-message">
+                    {errors.password.message}
+                  </span>
+                )}
               </div>
               <span className="input-icon">
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="password-toggle-btn"
-                >
+                  className="password-toggle-btn">
                   <i
                     className={
                       showPassword
                         ? "fa-solid fa-eye"
                         : "fa-regular fa-eye-slash"
-                    }
-                  ></i>
+                    }></i>
                 </button>
               </span>
             </div>
@@ -147,7 +146,6 @@ const LoginMain = () => {
               </button>
             </div>
           </div>
-          
         </div>
       </form>
     </>

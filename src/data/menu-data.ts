@@ -47,15 +47,15 @@ export const menuData: MenuItem[] = [
 
   {
     id: 7,
-    text: "Категория в соответствии с",
+    text: "Katalog",
     icon: BlogIcon,
     submenu: [
       {
-        text: "Все категории",
+        text: "Kataloglar",
         link: "/categories",
       },
       {
-        text: "Создать категорию",
+        text: "Katalog Yaratish",
         link: "/create-categories",
       },
     ],
@@ -63,34 +63,34 @@ export const menuData: MenuItem[] = [
 
   {
     id: 8,
-    text: "Продукт",
+    text: "Mahsulotlar",
     icon: BlogIcon,
     submenu: [
       {
-        text: "Все Продукт",
+        text: "Mahsulotlar",
         link: "/products",
       },
       {
-        text: "Создать Продукт",
+        text: "Mahsulot yaratish",
         link: "/create-products",
       },
     ],
   },
-  {
-    id: 3,
-    text: "Курсы",
-    icon: BlogIcon,
-    submenu: [
-      {
-        text: "Курсы",
-        link: "/services",
-      },
-      {
-        text: "Курсы Создавать",
-        link: "/create-service",
-      },
-    ],
-  },
+  // {
+  //   id: 3,
+  //   text: "Курсы",
+  //   icon: BlogIcon,
+  //   submenu: [
+  //     {
+  //       text: "Курсы",
+  //       link: "/services",
+  //     },
+  //     {
+  //       text: "Курсы Создавать",
+  //       link: "/create-service",
+  //     },
+  //   ],
+  // },
   // {
   //   id: 4,
   //   text: "Yangiliklar",

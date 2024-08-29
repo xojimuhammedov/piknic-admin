@@ -8,15 +8,16 @@ import axios from "axios";
 import Image from "next/image";
 import useGlobalContext from "@/hooks/use-context";
 import apiUrl from "@/utils/api";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   name: string;
   description: string;
-  image: [];
+  image: string;
 }
 
 const CreateServiceMain = () => {
-  const { user, header } = useGlobalContext();
+  const router = useRouter();
   const [upload, setupload] = useState<boolean>(false);
   const [blogImg, setBlogImg] = useState<string>("");
   const now = moment();
@@ -54,6 +55,7 @@ const CreateServiceMain = () => {
               position: "top-left",
             });
             reset();
+            router.push('/categories')
             setupload(false);
             break;
           case "custom error":
@@ -124,7 +126,6 @@ const CreateServiceMain = () => {
                       placeholder="Add Product Rating"
                       {...register("image")}
                       style={{ padding: 0 }}
-                      multiple
                       required
                     />
                   </div>

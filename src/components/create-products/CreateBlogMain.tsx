@@ -16,8 +16,8 @@ interface FormData {
   description: string;
   price: string;
   category_id: string;
-  video: [];
-  cover: [];
+  video:string;
+  cover: string;
   images: [];
 }
 
@@ -40,6 +40,8 @@ const CreateServiceMain = () => {
   const onSubmit: SubmitHandler<FormData> = (data) => {
     const formData = new FormData();
 
+
+
     if (data.images && data.images.length) {
       for (let i = 0; i < data.images.length; i++) {
         formData.append("images", data.images[i]);
@@ -58,16 +60,19 @@ const CreateServiceMain = () => {
     }
 
     formData.append("title", data.title);
+    formData.append("category_id", data.category_id);
     formData.append("description", dataOne);
     formData.append("price", data.price);
+    formData.append("is_active", true);
 
-    const submitData = {
-      ...formData,
-      is_active: true,
-    };
+
+    // const submitData = {
+    //   ...formData,
+    //   is_active: true,
+    // };
 
     axios
-      .post(`${apiUrl}/products/`, submitData, {
+      .post(`${apiUrl}/products/`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           "Content-Type": "multipart/form-data",
@@ -152,6 +157,28 @@ const CreateServiceMain = () => {
               </div>
             </div>
 
+            {/* Text (Uzbek) */}
+            <div className="lg:col-span-4 md:col-span-6 col-span-12">
+              <div className="cashier-select-field mb-5">
+                <h5 className="text-[15px] text-heading font-semibold mb-3">
+                  {" "}
+                  Narxi
+                </h5>
+                <div className="cashier-input-field-style">
+                  <div className="single-input-field w-full">
+                    <input
+                      type="text"
+                      placeholder="Narxi"
+                      {...register("price", {
+                        required: "Narxi is required",
+                      })}
+                    />
+                    {errors.price && <span>{errors.price.message}</span>}
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="lg:col-span-8 md:col-span-6 col-span-12">
               <div className="cashier-select-field mb-5">
                 <h5 className="text-[15px] text-heading font-semibold mb-3">
@@ -175,27 +202,26 @@ const CreateServiceMain = () => {
               </div>
             </div>
 
-            {/* Text (Uzbek) */}
             <div className="lg:col-span-4 md:col-span-6 col-span-12">
               <div className="cashier-select-field mb-5">
                 <h5 className="text-[15px] text-heading font-semibold mb-3">
                   {" "}
-                  Narxi
+                  Asosiy rasm
                 </h5>
                 <div className="cashier-input-field-style">
                   <div className="single-input-field w-full">
                     <input
-                      type="text"
-                      placeholder="Narxi"
-                      {...register("price", {
-                        required: "Narxi is required",
-                      })}
+                      type="file"
+                      placeholder="Add Product Rating"
+                      {...register("cover")}
+                      style={{ padding: 0 }}
+                      required
                     />
-                    {errors.price && <span>{errors.price.message}</span>}
                   </div>
                 </div>
               </div>
             </div>
+
 
             <div className="lg:col-span-4 md:col-span-6 col-span-12">
               <div className="cashier-select-field mb-5">
@@ -218,25 +244,6 @@ const CreateServiceMain = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-4 md:col-span-6 col-span-12">
-              <div className="cashier-select-field mb-5">
-                <h5 className="text-[15px] text-heading font-semibold mb-3">
-                  {" "}
-                  Asosiy rasm
-                </h5>
-                <div className="cashier-input-field-style">
-                  <div className="single-input-field w-full">
-                    <input
-                      type="file"
-                      placeholder="Add Product Rating"
-                      {...register("cover")}
-                      style={{ padding: 0 }}
-                      multiple
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div className="lg:col-span-4 md:col-span-6 col-span-12">
               <div className="cashier-select-field mb-5">
@@ -251,7 +258,6 @@ const CreateServiceMain = () => {
                       placeholder="Add Product Rating"
                       {...register("video")}
                       style={{ padding: 0 }}
-                      multiple
                     />
                   </div>
                 </div>

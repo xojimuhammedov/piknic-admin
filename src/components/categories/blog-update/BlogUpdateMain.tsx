@@ -12,7 +12,7 @@ interface FormData {
   id: string;
   name: string;
   description: string;
-  image: [];
+  image: string;
 }
 const BlogUpdateMain = ({ id }: idType) => {
   const [myproduct, setProduct] = useState<FormData>();
@@ -58,7 +58,7 @@ const BlogUpdateMain = ({ id }: idType) => {
       })
       .then((res) => {
         if (res.data.message === "Category was updated successfully") {
-          router.push("/blogs");
+          router.push("/categories");
           toast.success(`Hudud o'zgartirildi`, {
             position: "top-left",
           });
@@ -116,8 +116,7 @@ const BlogUpdateMain = ({ id }: idType) => {
                         placeholder="Add Product Rating"
                         {...register("image")}
                         style={{ padding: 0 }}
-                        multiple
-                        required
+                        // defaultValue={myproduct.image_src}
                       />
                     </div>
                   </div>
