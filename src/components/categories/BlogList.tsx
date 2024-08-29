@@ -132,11 +132,11 @@ const BlogList = () => {
                   <div className="cashier-salereturns-table-inner-wrapperD border border-solid border-grayBorder border-b-0 mb-7">
                     <div className="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
                       <div className="cashier-salereturns-table-dateF  ml-5">
-                        <h5>Название категории</h5>
+                        <h5>Katalog nomi</h5>
                       </div>
 
                       <div className="cashier-salereturns-table-actionF">
-                        <h5>Действие</h5>
+                        <h5>Actions</h5>
                       </div>
                     </div>
 

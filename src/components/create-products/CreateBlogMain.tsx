@@ -10,6 +10,7 @@ import useGlobalContext from "@/hooks/use-context";
 import apiUrl from "@/utils/api";
 import NiceSelectThree from "@/utils/NiceSelectThree";
 import CKeditor from "../create-service/CKeditor";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   title: string;
@@ -19,11 +20,14 @@ interface FormData {
   video:string;
   cover: string;
   images: [];
+  is_active:boolean;
 }
 
 const CreateServiceMain = () => {
+  const router = useRouter();
   const { user, header } = useGlobalContext();
   const [upload, setupload] = useState<boolean>(false);
+  const active = true;
   const [editorLoaded, setEditorLoaded] = useState<boolean>(false);
   const [dataOne, setDataOne] = useState<string>("");
   const [blogs, setBlogs] = useState([]);
@@ -63,13 +67,7 @@ const CreateServiceMain = () => {
     formData.append("category_id", data.category_id);
     formData.append("description", dataOne);
     formData.append("price", data.price);
-    formData.append("is_active", true);
-
-
-    // const submitData = {
-    //   ...formData,
-    //   is_active: true,
-    // };
+    formData.append("is_active", active);
 
     axios
       .post(`${apiUrl}/products/`, formData, {
@@ -81,10 +79,11 @@ const CreateServiceMain = () => {
       .then((res) => {
         switch (res.data.message) {
           case "Product was created succesfully!":
-            toast.success(`Hudud yaratildi!🎉`, {
+            toast.success(`Mahsulot yaratildi!🎉`, {
               position: "top-left",
             });
             reset();
+            router.push('/products')
             setupload(false);
             break;
           case "custom error":

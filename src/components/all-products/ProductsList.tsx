@@ -132,11 +132,11 @@ const ProductsList = () => {
                   <div className="cashier-salereturns-table-inner-wrapperD border border-solid border-grayBorder border-b-0 mb-7">
                     <div className="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
                       <div className="cashier-salereturns-table-dateF max-w-fit	 ml-5">
-                        <h5>Наименование товара</h5>
+                        <h5>Mahsulot nomi</h5>
                       </div>
 
                       <div className="cashier-salereturns-table-actionF">
-                        <h5>Действие</h5>
+                        <h5>Actions</h5>
                       </div>
                     </div>
 
