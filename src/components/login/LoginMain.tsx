@@ -44,14 +44,13 @@ const LoginMain = () => {
     axios
       .post(`${apiUrl}/auth/signin`, userInfo)
       .then((res) => {
-        console.log(res.data);
         switch (res.data.message) {
           case "Login success":
-            router.push("/");
             const token = res.data.data.tokens.accessToken.token;
             localStorage.setItem("accessToken", token);
             setLoading(false);
-
+            router.push("/");
+            
             break;
           case "password not Match":
             setLoading(false);
