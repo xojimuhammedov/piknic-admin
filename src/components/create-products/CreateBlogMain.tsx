@@ -27,7 +27,7 @@ const CreateServiceMain = () => {
   const router = useRouter();
   const { user, header } = useGlobalContext();
   const [upload, setupload] = useState<boolean>(false);
-  const active = true;
+  const active:any = true;
   const [editorLoaded, setEditorLoaded] = useState<boolean>(false);
   const [dataOne, setDataOne] = useState<string>("");
   const [blogs, setBlogs] = useState([]);

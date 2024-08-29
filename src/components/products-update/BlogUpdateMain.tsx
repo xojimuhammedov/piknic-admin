@@ -17,8 +17,8 @@ interface FormData {
   description: string;
   price: string;
   category_id: string;
-  video: [];
-  cover: [];
+  video: string;
+  cover: string;
   images: [];
 }
 
@@ -238,7 +238,6 @@ const BlogProductMain = ({ id }: any) => {
                         placeholder="Add Product Rating"
                         {...register("cover")}
                         style={{ padding: 0 }}
-                        multiple
                       />
                     </div>
                   </div>
@@ -258,7 +257,6 @@ const BlogProductMain = ({ id }: any) => {
                         placeholder="Add Product Rating"
                         {...register("video")}
                         style={{ padding: 0 }}
-                        multiple
                       />
                     </div>
                   </div>
