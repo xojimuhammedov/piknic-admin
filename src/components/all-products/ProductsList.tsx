@@ -131,8 +131,12 @@ const ProductsList = () => {
                 <div className="cashier-salereturns-table-innerD">
                   <div className="cashier-salereturns-table-inner-wrapperD border border-solid border-grayBorder border-b-0 mb-7">
                     <div className="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
-                      <div className="cashier-salereturns-table-dateF max-w-fit	 ml-5">
+                      <div className="cashier-salereturns-table-dateF max-w-fit	ml-5">
                         <h5>Mahsulot nomi</h5>
+                      </div>
+
+                      <div className="cashier-salereturns-table-dateF max-w-fit	ml-5">
+                        <h5>Katalog nomi</h5>
                       </div>
 
                       <div className="cashier-salereturns-table-actionF">
@@ -146,7 +150,11 @@ const ProductsList = () => {
                           key={item.id}
                           className="cashier-salereturns-table-list flex border-b border-solid border-grayBorder h-12">
                           <div className="cashier-salereturns-table-dateF ml-5">
-                            <span> {item.title} </span>
+                            <span> {item?.title} </span>
+                          </div>
+
+                          <div className="cashier-salereturns-table-dateF ml-5">
+                            <span> {item?.category?.name} </span>
                           </div>
 
                           <div className="cashier-salereturns-table-actionF">
