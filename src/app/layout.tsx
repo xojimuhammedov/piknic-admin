@@ -11,7 +11,6 @@ import AdminRoute from "@/privetRoute/AdminRoute";
 import Sidebar from "@/sheardComponent/Sidebar";
 export default function RootLayout({ children }: childrenType) {
   const pathName = usePathname();
-  const token = localStorage.getItem("accessToken");
   return (
     <>
       <html lang="en">
