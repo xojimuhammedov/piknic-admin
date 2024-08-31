@@ -31,15 +31,15 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 7,
-    text: "Katalog",
+    text: "Bo'limlar",
     icon: BlogIcon,
     submenu: [
       {
-        text: "Kataloglar",
+        text: "Bo'limlar",
         link: "/categories",
       },
       {
-        text: "Katalog Yaratish",
+        text: "Bo'limlar Yaratish",
         link: "/create-categories",
       },
     ],

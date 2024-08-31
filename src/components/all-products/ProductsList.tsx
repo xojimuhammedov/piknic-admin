@@ -136,7 +136,7 @@ const ProductsList = () => {
                       </div>
 
                       <div className="cashier-salereturns-table-dateF max-w-fit	ml-5">
-                        <h5>Katalog nomi</h5>
+                        <h5>Bo`lim nomi</h5>
                       </div>
 
                       <div className="cashier-salereturns-table-actionF">
