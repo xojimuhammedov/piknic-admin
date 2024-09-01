@@ -1,6 +1,5 @@
 "use client"
 import React from 'react';
-import Header from '../../components/common/Header';
 import BreadCamp from '../../components/common/BreadCamp';
 import { childrenAndBreadCampType } from '@/interFace/interFace';
 import useGlobalContext from '@/hooks/use-context';
@@ -11,7 +10,6 @@ const ContentWrapper = ({ children,breadCampTitle }: childrenAndBreadCampType) =
     return (
         <>
             <div className={`${sideMenuOpen ? "cashier-dashboard-main sidebar-enable": "cashier-dashboard-main"}`}>
-              <Header breadCampTitle={breadCampTitle}/>
               <BreadCamp breadCampTitle={breadCampTitle}/>
               {children}
               <Footer/>

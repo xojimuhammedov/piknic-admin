@@ -11,6 +11,7 @@ import apiUrl from "@/utils/api";
 import NiceSelectThree from "@/utils/NiceSelectThree";
 import CKeditor from "../create-service/CKeditor";
 import { useRouter } from "next/navigation";
+import Preloader from "@/sheardComponent/Preloader/Preloader";
 
 interface FormData {
   title: string;
@@ -25,7 +26,8 @@ interface FormData {
 
 const CreateServiceMain = () => {
   const router = useRouter();
-  const { user, header } = useGlobalContext();
+  const { loading, setLoading } = useGlobalContext();
+
   const [upload, setupload] = useState<boolean>(false);
   const active:any = true;
   const [editorLoaded, setEditorLoaded] = useState<boolean>(false);
@@ -43,7 +45,7 @@ const CreateServiceMain = () => {
   } = useForm<FormData>();
   const onSubmit: SubmitHandler<FormData> = (data) => {
     const formData = new FormData();
-
+    setLoading(true);
 
 
     if (data.images && data.images.length) {
@@ -83,12 +85,14 @@ const CreateServiceMain = () => {
               position: "top-left",
             });
             reset();
+            setLoading(false);
             router.push('/products')
             setupload(false);
             break;
           case "custom error":
             reset();
             setupload(false);
+            setLoading(false);
             setloginError("something is wrong");
             toast.error(`something is wrong`, {
               position: "top-left",
@@ -124,6 +128,10 @@ const CreateServiceMain = () => {
   useEffect(() => {
     setEditorLoaded(true);
   }, []);
+
+  if (loading) {
+    return <Preloader />;
+  }
 
   return (
     <>

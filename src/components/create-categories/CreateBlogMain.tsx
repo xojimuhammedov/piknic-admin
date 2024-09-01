@@ -9,6 +9,7 @@ import Image from "next/image";
 import useGlobalContext from "@/hooks/use-context";
 import apiUrl from "@/utils/api";
 import { useRouter } from "next/navigation";
+import Preloader from "@/sheardComponent/Preloader/Preloader";
 
 interface FormData {
   name: string;
@@ -18,6 +19,7 @@ interface FormData {
 
 const CreateServiceMain = () => {
   const router = useRouter();
+  const { loading, setLoading } = useGlobalContext();
   const [upload, setupload] = useState<boolean>(false);
   const [blogImg, setBlogImg] = useState<string>("");
   const now = moment();
@@ -31,6 +33,7 @@ const CreateServiceMain = () => {
   } = useForm<FormData>();
   const onSubmit: SubmitHandler<FormData> = (data) => {
     const formData = new FormData();
+    setLoading(true);
 
     if (data.image && data.image.length) {
       for (let i = 0; i < data.image.length; i++) {
@@ -57,10 +60,12 @@ const CreateServiceMain = () => {
             reset();
             router.push('/categories')
             setupload(false);
+            setLoading(false);
             break;
           case "custom error":
             reset();
             setupload(false);
+            setLoading(false);
             setloginError("something is wrong");
             toast.error(`something is wrong`, {
               position: "top-left",
@@ -81,6 +86,10 @@ const CreateServiceMain = () => {
         }
       });
   };
+
+  if (loading) {
+    return <Preloader />;
+  }
 
   return (
     <>
