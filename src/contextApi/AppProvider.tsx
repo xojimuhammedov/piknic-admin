@@ -29,8 +29,8 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (token || loggedIn) {
       axios
-        .get(`${"https://picnic.propartnyor.uz/api"}/auth/me`, header)
-        .then((res) => {
+        .get(`${"https://api.piknicuz.com/api"}/auth/me`, header)
+        .then((res:any) => {
           if (res.data.data) {
             const userinfo = res.data.data;
             setLoggedIn(true);
