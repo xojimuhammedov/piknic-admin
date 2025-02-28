@@ -1,3 +1,3 @@
-const apiUrl = "https://picnic.propartnyor.uz/api"
+const apiUrl = "https://api.piknicuz.com/api"
 
 export default apiUrl;
