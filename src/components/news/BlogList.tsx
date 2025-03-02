@@ -80,39 +80,20 @@ const BlogList = () => {
 
   useEffect(() => {
     axios
-      .get(`${apiUrl}/news `)
+      .get(`${apiUrl}/carts`)
       .then((res) => { 
         setBlogs(res.data.data);
-        setotalPages(res.data.totalPages);
-        setcurrentPage(res.data.currentPage);
+        // setotalPages(res.data.totalPages);
+        // setcurrentPage(res.data.currentPage);
       })
       .catch((e) => console.log(e));
   }, [page, limit]);
   // get search products
 
-  const pageLimitArray = [
-    {
-      id: 1,
-      value: 5,
-    },
-    {
-      id: 2,
-      value: 10,
-    },
-    {
-      id: 3,
-      value: 15,
-    },
-    {
-      id: 4,
-      value: 20,
-    },
-  ];
 
-  const selectHandler = () => {};
   return (
     <>
-      <div className="cashier-content-area mt-[30px] px-7">
+      <div className="cashier-content-area ml-[300px] mt-[30px] px-7">
         <div className="cashier-salereturns-area bg-white p-7 custom-shadow rounded-lg pt-5 mb-5">
           <div className="cashier-table-header-search-area">
             <div className="grid grid-cols-12 gap-x-5 mb-7 pb-0.5">

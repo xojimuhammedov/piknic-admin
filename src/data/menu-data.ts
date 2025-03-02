@@ -60,4 +60,19 @@ export const menuData: MenuItem[] = [
       },
     ],
   },
+  {
+    id: 9,
+    text: "Korzinka",
+    icon: BlogIcon,
+    submenu: [
+      {
+        text: "Korzinka",
+        link: "/news",
+      },
+      // {
+      //   text: "Mahsulot yaratish",
+      //   link: "/create-products",
+      // },
+    ],
+  },
 ];
